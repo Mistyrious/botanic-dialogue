@@ -1,7 +1,7 @@
 const { Configuration, OpenAIApi } = require('openai');
 
 const configuration = new Configuration({
-  apiKey: OPENAI_APIKEY,
+  apiKey: process.env.OPENAI_APIKEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -54,16 +54,16 @@ const getLight = () => {
 };
 
 const generateCompletion = async (req, res) => {
-  const data = req.body.data;
+  const { data } = req.body;
   let prompt;
   if (data.prompt || !data.transcript) {
     prompt = `${data.prompt}`;
-  } else if (!data.moisture || !data.light){
+  } else if (!data.moisture || !data.light) {
     prompt = `Reply to the following prompt from the perspective of a Kalanchoe plant conversing with a human. This plant is stuck indoors as part of an exhibit, was bought from a grocery store, and it's monitoring system is not currently working, so its levels of soil moisture and light exposure are unknown.
     
     Human: ${data.transcript}
-    Plant:`
-  }else {
+    Plant:`;
+  } else {
     moisture = data.moisture;
     light = data.light;
     touch = data.touch;
@@ -72,7 +72,7 @@ const generateCompletion = async (req, res) => {
     Visitor: ${data.transcript}
     Plant:`;
   }
-  console.log("prompt: ", prompt);
+  console.log('prompt: ', prompt);
 
   try {
     const completion = await openai.createCompletion({
