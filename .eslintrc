@@ -1,0 +1,11 @@
+{ 
+  "extends": [
+    "airbnb/base",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "no-underscore-dangle" : "off",
+	"no-plusplus": "off",
+    "import/extensions": "off"
+  }
+}

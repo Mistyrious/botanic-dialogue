@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "GreenNature";
+  src: url(/assets/green-nature.ttf);
+}
+
+body{
+  margin: 0;
+}
+
+#app{
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(#0c1307, #466421);
+  background-position: center;
+  background-size:cover;
+  overflow: hidden;
+  text-align: center;
+}
+
+#main {
+  font-size: 24px;
+  line-height: 24px;
+  width: 60%;
+  height: fit-content;
+  color: #e2e2e2;
+  font-family: Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+#main > p {
+  width: 70%;
+}
+
+h1{
+  font-family: GreenNature, Helvetica, sans-serif;
+  font-size: 120px;
+  line-height: 100px;
+  font-weight: 300;
+}
+
+#micListen {
+  background-color: #466421;
+  display: inline block;
+  background-image: url(/assets/img/microphone.png);
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border-width: 0px;
+}
+
+#micListen:active{
+  background-color: #374f1a;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
