@@ -22,32 +22,32 @@ const getMood = () => {
 };
 
 const getMoist = () => {
-  if (moisture > 90) {
-    return 'an unhealthily high';
+  if (moisture > 520) {
+    return 'an unhealthily low';
   }
-  if (moisture > 70) {
-    return 'a somewhat too high';
+  if (moisture > 470) {
+    return 'a slightly low';
   }
-  if (moisture > 40) {
+  if (moisture > 420) {
     return 'a normal';
   }
-  if (moisture > 20) {
-    return 'a low';
+  if (moisture > 370) {
+    return 'a somewhat high';
   }
-  return 'an unhealthily low';
+  return 'an unhealthily high';
 };
 
 const getLight = () => {
-  if (light > 90) {
+  if (light > 1000) {
     return 'far too much';
   }
-  if (light > 70) {
+  if (light > 900) {
     return 'somewhat too much';
   }
-  if (light > 40) {
+  if (light > 600) {
     return 'a normal level of';
   }
-  if (light > 20) {
+  if (light > 400) {
     return 'not enough';
   }
   return 'extremely low';
@@ -59,7 +59,7 @@ const generateCompletion = async (req, res) => {
   if (data.prompt || !data.transcript) {
     prompt = `${data.prompt}`;
   } else if (!data.moisture || !data.light) {
-    prompt = `Reply to the following prompt from the perspective of a Kalanchoe plant conversing with a human. This plant is stuck indoors as part of an exhibit, was bought from a grocery store, and it's monitoring system is not currently working, so its levels of soil moisture and light exposure are unknown.
+    prompt = `Reply to the following prompt from the perspective of a chrysanthemum plant conversing with a human. This plant is alone indoors as part of an exhibit, was bought from a grocery store, and it's monitoring system is not currently working, so its levels of soil moisture and light exposure are unknown.
     
     Human: ${data.transcript}
     Plant:`;
@@ -67,7 +67,7 @@ const generateCompletion = async (req, res) => {
     moisture = data.moisture;
     light = data.light;
     touch = data.touch;
-    prompt = `The following is a conversation between visitors and a ${getMood()} Kalanchoe plant that is on display in a science-based art exhibit where visitors are meant to converse with the plant. This plant has ${getMoist()} soil moisture level of ${moisture}%, ${getLight()} light exposure, and doesn't enjoy being touched. It has been touched ${touch} times in the past half hour. It was originally bought from a grocery store, and its health is being monitored with various Arduino sensors.
+    prompt = `The following is a conversation between visitors and a ${getMood()} chrysanthemum plant that is on display as a science-based art exhibit where visitors are meant to converse with the plant. This plant has ${getMoist()} soil moisture level of ${moisture}%, ${getLight()} light exposure, and doesn't enjoy being touched. It has been touched ${touch} times in the past half hour. It was originally bought from a grocery store, and its health is being monitored with various Arduino sensors.
     
     Visitor: ${data.transcript}
     Plant:`;
