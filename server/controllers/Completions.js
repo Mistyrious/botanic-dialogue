@@ -55,6 +55,7 @@ const getLight = () => {
 
 const generateCompletion = async (req, res) => {
   const { data } = req.body;
+  console.log(`moisture: ${data.moisture}, light: ${data.light}`);
   let prompt;
   if (data.prompt || !data.transcript) {
     prompt = `${data.prompt}`;
@@ -80,8 +81,8 @@ const generateCompletion = async (req, res) => {
       prompt,
       temperature: 0.84,
       max_tokens: 100,
-      presence_penalty: 1.45,
-      frequency_penalty: 1.2,
+      presence_penalty: 1.7,
+      frequency_penalty: 1.5,
     });
     console.log(completion.data.choices[0].text);
     return res.status(200).json({ result: completion.data.choices[0].text });

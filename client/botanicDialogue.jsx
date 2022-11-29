@@ -2,13 +2,15 @@ import 'regenerator-runtime/runtime';
 import {createRoot} from "react-dom/client";
 import React, { useState, useEffect } from "react";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
+let moisture, light, touch;
 
 function App(){
   let port;
-  let moisture, light, touch;
+  //let moisture, light, touch;
 
   const [input, setInput] = useState();
   const [result, setResult] = useState(); 
+
   const {
     transcript,
     listening,
@@ -24,8 +26,11 @@ function App(){
       data.prompt = `Write a generic greeting to a human from the perspective of a plant.`;
       return data;
     }
-
-    data = {transcript, moisture, light, touch};
+    data = {
+      transcript, 
+      moisture, 
+      light,
+      touch};
 
     return data;
   }
